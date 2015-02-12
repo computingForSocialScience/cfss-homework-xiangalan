@@ -38,8 +38,9 @@ def zip_code_barchart(filename):
 	q = [28,35,42,49,56,63,70,77,84]
 	for i in lines:
 		for p in q:
-			if i[p] != "":
-				zipcode.append(int(i[p][:5]))
+			if i[p] == "":
+				continue
+			zipcode.append(int(i[p][:5]))
 		
 	print zipcode
 	plt.hist(zipcode, bins=400)
