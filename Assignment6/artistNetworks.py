@@ -43,7 +43,6 @@ def getDepthEdges(artistID, depth):
 
 
 
-
 def getEdgeList(artistID, depth):
 	"""s = getDepthEdges(artistID, depth)
 	for i in s:
