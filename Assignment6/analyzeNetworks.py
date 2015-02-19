@@ -36,12 +36,12 @@ edgeList = readEdgeList(filename)
 
 
 
-def combineEdgelists(edgeList1, edgeList2):
+def combineEdgeLists(edgeList1, edgeList2):
 	concatenated = pd.concat([edgeList1,edgeList2])
 	#print concatenated.drop_duplicates()
 	return concatenated.drop_duplicates()
 
-combineEdgelists(readEdgeList('out_file.csv'),readEdgeList('out_file2.csv'))
+#combineEdgeLists(readEdgeList('out_file.csv'),readEdgeList('out_file2.csv'))
 
 
 
@@ -49,8 +49,8 @@ def pandasToNetworkX(edgeList):
 	g = nx.DiGraph()
 	for sender,receiver in edgeList.to_records(index=False):
 		g.add_edge(sender,receiver)
-	#print g.nodes()
-pandasToNetworkX(readEdgeList('out_file.csv'))
+	return(g)
+#pandasToNetworkX(readEdgeList('out_file.csv'))
 
 
 
@@ -64,4 +64,5 @@ def randomCentralNode(inputDiGraph):
 			centrality_dict[key] = 1.0/len(centrality_dict)
 	random_node = np.random.choice(centrality_dict.keys(), p=centrality_dict.values())
 	return random_node
-#randomCentralNode(pandasToNetworkX(combineEdgelists(readEdgeList('out_file.csv'),readEdgeList('out_file2.csv'))))
+
+#randomCentralNode(pandasToNetworkX(combineEdgeLists(readEdgeList('out_file.csv'),readEdgeList('out_file2.csv'))))

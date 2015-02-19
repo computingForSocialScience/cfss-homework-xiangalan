@@ -9,12 +9,12 @@ def getRelatedArtists(artistID):
 	req = requests.get(url)
 	Data = req.json()
 	RelatedArtists = []
-	for i in range(20):
+	for i in range(len(Data["artists"])):
 		RelatedArtist = Data["artists"][i]["id"]
 		RelatedArtists.append(RelatedArtist)
 	return(RelatedArtists)
 # print getRelatedArtists("2mAFHYBasVVtMekMUkRO9g")
-	
+# print getRelatedArtists("43ZHCT0cAZBISjO8DG9PnE")
 	
 	
 
@@ -61,5 +61,7 @@ def writeEdgeList(artistID, depth, filename):
 	data.to_csv(filename, index=False)
 	return data
 
-writeEdgeList("2mAFHYBasVVtMekMUkRO9g", 2, "out_file.csv")	
+#writeEdgeList("2mAFHYBasVVtMekMUkRO9g", 2, "out_file.csv")	
+#writeEdgeList("43ZHCT0cAZBISjO8DG9PnE", 3, "out_file2.csv")
+
 		
