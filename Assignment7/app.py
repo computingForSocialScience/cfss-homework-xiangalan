@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pymysql
+<<<<<<< HEAD
 import unicodecsv
 import sys
 import requests
@@ -13,6 +14,8 @@ from fetchArtist import *
 from fetchAlbums import * 
 
 app = Flask(__name__)
+=======
+>>>>>>> af27b6d43a995688c34d65708437872b76971397
 
 dbname="playlists"
 host="localhost"
@@ -20,6 +23,7 @@ user="root"
 passwd=""
 db=pymysql.connect(db=dbname, host=host, user=user,passwd=passwd, charset='utf8')
 
+<<<<<<< HEAD
 def createNewPlaylist(ArtistName):
     c = db.cursor()
     #create tables"
@@ -101,6 +105,9 @@ def createNewPlaylist(ArtistName):
     c.close()
 
 #createNewPlaylist("Patti Smith")
+=======
+app = Flask(__name__)
+>>>>>>> af27b6d43a995688c34d65708437872b76971397
 
 
 @app.route('/')
@@ -112,20 +119,26 @@ def make_index_resp():
 
 @app.route('/playlists/')
 def make_playlists_resp():
+<<<<<<< HEAD
     c = db.cursor()
     get_playlists = """SELECT * FROM playlists;"""
     c.execute(get_playlists)
     playlists = c.fetchall()
+=======
+>>>>>>> af27b6d43a995688c34d65708437872b76971397
     return render_template('playlists.html',playlists=playlists)
 
 
 @app.route('/playlist/<playlistId>')
 def make_playlist_resp(playlistId):
+<<<<<<< HEAD
     c = db.cursor()
     input_playlist = playlistId
     song_request = """SELECT songOrder, artistName, albumName,trackName FROM songs WHERE playlistId = (%s)""" % (input_playlist)
     c.execute(song_request)
     songs = c.fetchall()
+=======
+>>>>>>> af27b6d43a995688c34d65708437872b76971397
     return render_template('playlist.html',songs=songs)
 
 
@@ -137,10 +150,18 @@ def add_playlist():
     elif request.method == 'POST':
         # this code executes when someone fills out the form
         artistName = request.form['artistName']
+<<<<<<< HEAD
         createNewPlaylist(artistName)
         return(redirect("/playlists/"))
 
 
+=======
+        # YOUR CODE HERE
+        return(redirect("/playlists/"))
+
+
+
+>>>>>>> af27b6d43a995688c34d65708437872b76971397
 if __name__ == '__main__':
     app.debug=True
     app.run()
