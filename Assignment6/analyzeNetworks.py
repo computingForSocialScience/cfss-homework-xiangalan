@@ -29,9 +29,9 @@ def degree(edgeList, in_or_out):
 	return degree
 #print degree("out_file.csv", "in")
 
-in_or_out = 'out'
-filename = 'out_file.csv'
-edgeList = readEdgeList(filename)
+#in_or_out = 'out'
+#filename = 'out_file.csv'
+#edgeList = readEdgeList(filename)
 #print degree(edgeList, in_or_out)
 
 
